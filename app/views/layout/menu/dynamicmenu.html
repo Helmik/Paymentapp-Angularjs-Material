@@ -1,0 +1,27 @@
+<div>
+	<menu-toggle section="section">
+		<!-- <button class="md-button-toggle md-button md-ink-ripple" type="button" ng-transclude="" ng-click="toggle()" aria-controls="docs-menu-CSS" aria-expanded="false" aria-describedby="heading_Customization">
+	  		<div flex="" layout="row" class="layout-row flex">
+	    	CSS
+	    		<span flex="" class="flex"></span>
+	    		<span aria-hidden="true" class="md-toggle-icon" ng-class="{'toggled' : isOpen()}">
+	      			<md-icon md-svg-icon="md-toggle-arrow" aria-hidden="true"><svg version="1.1" x="0px" y="0px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+	  					<path d="M24 16l-12 12 2.83 2.83 9.17-9.17 9.17 9.17 2.83-2.83z"></path>
+	  					<path d="M0 0h48v48h-48z" fill="none"></path>
+					</svg></md-icon>
+	    		</span>
+	  		</div>
+		  	<span class="md-visually-hidden ng-binding ng-scope">
+		    	Toggle collapsed
+		  	</span>
+			<div class="md-ripple-container"></div>
+		</button> -->
+		<ul class="menu-toggle-list menu">
+			<li ng-repeat="option in menu" class="menu">
+				<menu-link section="page" class="menu">
+					<a class="md-button md-ink-ripple menu menu-element" ng-click="goToState(option.state)"> {{option.name}} </a>
+				</menu-link>
+			</li>
+		</ul>
+	</menu-toggle>
+</div>

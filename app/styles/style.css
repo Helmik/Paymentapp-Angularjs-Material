@@ -1,0 +1,27 @@
+.md-theme-indigo{
+	border-bottom: 1.5px solid;
+}
+
+.left-menu{
+	background-color: #106CC8;
+    flex-grow: 1;
+}
+
+.md-theme-indigo{
+	background-color: #106CC8 !important; 
+}
+
+.md-sidenav-left{
+	height: 100%;
+	width: 250px;
+}
+
+.menu{
+	padding: 0px !important;
+	margin: 0px !important;
+	color: white;
+}
+
+.menu-element{
+	display: block;
+}
