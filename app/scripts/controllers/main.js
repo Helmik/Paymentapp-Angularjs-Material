@@ -11,7 +11,7 @@
 	
 	angular.module('Users',['md.data.table', 'ngMaterial']);
 
-	angular.module('Miscellaneous', [])
+	angular.module('Miscellaneous', ['ngMaterial'])
 
   // .controller('MainCtrl', function () {
   //   this.awesomeThings = [

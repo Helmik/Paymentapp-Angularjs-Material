@@ -25,3 +25,7 @@
 .menu-element{
 	display: block;
 }
+
+.pointer-cursor{
+	cursor: pointer;
+}

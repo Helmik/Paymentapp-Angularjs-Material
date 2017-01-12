@@ -20,6 +20,7 @@
 
     'ui.router',
     'md.data.table',
+    'ngLodash',
 
     'Layout',
     'Users',
@@ -36,14 +37,19 @@
       templateUrl: 'views/dashboard/dashboard.html'
     })
     .state('createUser', {
-      url: "/createUser",
-      controller: 'UserCreateCtrl',
-      templateUrl: 'views/users/createuser.html'
+      url: "/users/create",
+      controller: 'UserSaveCtrl',
+      templateUrl: 'views/users/saveuser.html'
     })
     .state('usersList', {
-      url: "/usersList",
+      url: "/users",
       controller: 'GetUsersCtrl',
       templateUrl: 'views/users/getusers.html'
+    })
+    .state('getUser', {
+      url: "/users/:id",
+      controller: 'UserSaveCtrl',
+      templateUrl: 'views/users/saveuser.html'
     });
   });
 })();

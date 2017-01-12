@@ -15,9 +15,17 @@
   		return PetitionsService.get("users");
   	};
 
+    self.getUserById = function(id){
+      return PetitionsService.get("users/"+id)
+    };
+
   	self.saveUser = function(user){
   		return PetitionsService.post("users/create",user);
   	};
+
+    self.updateUser = function(user){
+      return PetitionsService.put("users/update/"+user._id,user);
+    }
 
   }]);
 })();

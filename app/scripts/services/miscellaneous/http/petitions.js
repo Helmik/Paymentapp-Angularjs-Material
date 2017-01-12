@@ -12,11 +12,12 @@
   .service('PetitionsService', ["$http","$q","BACK_END",function($http,$q,BACK_END){
 
   	var self = this;
+    const BASE_URL = BACK_END.URL();
 
     // Define a generic get petition
   	self.get = function(URL){
   		var defer = $q.defer();
-  		$http.get(BACK_END.URL() + URL).then(
+  		$http.get(BASE_URL + URL).then(
   			function(data){
   				defer.resolve(data);
   			},
@@ -30,7 +31,7 @@
     // Define a generic post petition
   	self.post = function(URL,data){
   		var defer = $q.defer();
-  		$http.post(BACK_END.URL() + URL, data).then(
+  		$http.post(BASE_URL + URL, data).then(
   			function(data){
   				defer.resolve(data);
   			},
@@ -40,6 +41,20 @@
   		);
   		return defer.promise;
   	};
+
+    // Define a generic put petition
+    self.put = function(URL,data){
+      var defer = $q.defer();
+      $http.put(BASE_URL + URL, data).then(
+        function(data){
+          defer.resolve(data);
+        },
+        function(error){
+          defer.reject(error);
+        }
+      );
+      return defer.promise;
+    };
 
   }]);
 })();
