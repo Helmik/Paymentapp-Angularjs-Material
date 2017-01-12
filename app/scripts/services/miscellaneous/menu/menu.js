@@ -1,5 +1,5 @@
-'use strict';
 (function(){
+'use strict';
   /**
    * @ngdoc service
    * @name paymentappApp.miscellaneous/menu/menu
@@ -7,20 +7,18 @@
    * # miscellaneous/menu/menu
    * Factory in the paymentappApp.
    */
-  angular.module('paymentappApp')
+  angular.module('Miscellaneous')
   .factory('menuFactory', function () {
 
     // Public API here
     return [
       {
         name : "Users list",
-        state : "userList",
-        url: "/"
+        state : "usersList"
       },
       {
         name : "Create user",
-        state : "createUser",
-        url: "/createUser"
+        state : "createUser"
       }
     ];
   });

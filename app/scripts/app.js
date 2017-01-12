@@ -1,5 +1,5 @@
-'use strict';
 (function(){
+'use strict';
   /**
    * @ngdoc overview
    * @name paymentappApp
@@ -8,7 +8,7 @@
    *
    * Main module of the application.
    */
-  angular
+  var app = angular
   .module('paymentappApp', [
     'ngAnimate',
     'ngCookies',
@@ -19,8 +19,11 @@
     'ngRoute',
 
     'ui.router',
+    'md.data.table',
 
-    'Layout'
+    'Layout',
+    'Users',
+    'Miscellaneous'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -30,12 +33,17 @@
     .state('home', {
       url: "/home",
       controller: 'DashboardCtrl',
-      template: 'view/dashboard/dashboard.html'
+      templateUrl: 'views/dashboard/dashboard.html'
     })
     .state('createUser', {
       url: "/createUser",
-      controller: 'CreateUserCtrl',
+      controller: 'UserCreateCtrl',
       templateUrl: 'views/users/createuser.html'
+    })
+    .state('usersList', {
+      url: "/usersList",
+      controller: 'GetUsersCtrl',
+      templateUrl: 'views/users/getusers.html'
     });
   });
 })();

@@ -1,12 +1,12 @@
 <md-whiteframe class="md-whiteframe-6dp" flex-sm="65" flex-gt-sm="65" flex-gt-md="65" layout layout-align="center center">
 	<div layout="column" ng-cloak>    
 		<md-content layout-padding layout="column" ng-cloak>
-		  <form name="projectForm">
+		  <ng-form name="UserForm">
 
 		    <md-input-container class="md-block">
 		      <label>First name </label>
 		      <input required name="First Name" ng-model="user.firstName">
-		      <div ng-messages="projectForm.firstName.$error">
+		      <div ng-messages="UserForm.firstName.$error">
 		        <div ng-message="required">First name is required.</div>
 		      </div>
 		    </md-input-container>
@@ -14,7 +14,7 @@
 		    <md-input-container class="md-block">
 		      <label>Last name </label>
 		      <input required name="Last Name" ng-model="user.lastName">
-		      <div ng-messages="projectForm.lastName.$error">
+		      <div ng-messages="UserForm.lastName.$error">
 		        <div ng-message="required">Last name is required.</div>
 		      </div>
 		    </md-input-container>
@@ -22,7 +22,7 @@
 		    <md-input-container class="md-block">
 		      <label>User name </label>
 		      <input required name="description" ng-model="user.userName">
-		      <div ng-messages="projectForm.userName.$error">
+		      <div ng-messages="UserForm.userName.$error">
 		        <div ng-message="required">User name is required.</div>
 		      </div>
 		    </md-input-container>
@@ -30,7 +30,7 @@
 		    <md-input-container class="md-block">
 		      <label>Password </label>
 		      <input type="password" md-minlength required name="Password" ng-model="user.password">
-		      <div ng-messages="projectForm.password.$error">
+		      <div ng-messages="UserForm.password.$error">
 		        <div ng-message="required"> Password is required.</div>
 		        <div ng-message="md-minlength">Password must has 8 caracters at least.</div>
 		      </div>
@@ -38,10 +38,10 @@
 
 		    <md-input-container class="md-block">
 		      <label>Email </label>
-		      <input required type="email" name="clientEmail" ng-model="project.clientEmail"
+		      <input required type="email" name="clientEmail" ng-model="user.email"
 		             minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-		      <div ng-messages="projectForm.clientEmail.$error" role="alert">
+		      <div ng-messages="UserForm.clientEmail.$error" role="alert">
 		        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
 		          Your email must be between 10 and 100 characters long and look like an e-mail address.
 		        </div>
@@ -49,10 +49,10 @@
 		    </md-input-container>
 
 		    <div>
-		      <md-button type="submit">Submit</md-button>
+		      <md-button type="submit" ng-disabled="UserForm.$invalid" ng-click="createUser()">Submit</md-button>
 		    </div>
 
-		  </form>
+		  </ng-form>
 		</md-content>
 	</div>
 </md-whiteframe>

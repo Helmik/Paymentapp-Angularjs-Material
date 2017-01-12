@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: UsersCreateuserCtrl', function () {
+describe('Controller: UsersGetusersCtrl', function () {
 
   // load the controller's module
   beforeEach(module('paymentappApp'));
 
-  var UsersCreateuserCtrl,
+  var UsersGetusersCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    UsersCreateuserCtrl = $controller('UsersCreateuserCtrl', {
+    UsersGetusersCtrl = $controller('UsersGetusersCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(UsersCreateuserCtrl.awesomeThings.length).toBe(3);
+    expect(UsersGetusersCtrl.awesomeThings.length).toBe(3);
   });
 });

@@ -15,7 +15,6 @@
           scope.menu = menuFactory;
 
           scope.goToState = function(state){
-          	console.log($state.get('createUser'));
           	$state.go(state);
           };
   
