@@ -9,7 +9,8 @@
 	 * Controller of the paymentappApp
 	 */
 	angular.module('Users')
-    .controller('GetUsersCtrl', ['$scope','$timeout','$state','$q','UsersService','lodash', function($scope,$timeout,$state,$q,UsersService,lodash){
+    .controller('GetUsersCtrl', ['$scope','$timeout','$state','$q','UsersService','lodash', '$mdToast', 'Messages',
+    function($scope,$timeout,$state,$q,UsersService,lodash,$mdToast,Messages){
 
     var allUsers = [];
   	$scope.usersToShow = [];
@@ -27,14 +28,14 @@
   
   	// Get all user on load state
   	UsersService.getUsers().then(
-  		function(data){
-  			allUsers = data.data.data;
-  			$scope.users = allUsers.filter(function(user){
-  								return user.active;
-  							});
-  			$scope.usersToShow = $scope.users.slice(($scope.query.page-1)*5,($scope.query.page-1)*5+$scope.query.limit);
+	function(data){
+		allUsers = data.data.data;
+		$scope.users = allUsers.filter(function(user){
+							return user.active;
+						});
+		$scope.usersToShow = $scope.users.slice(($scope.query.page-1)*5,($scope.query.page-1)*5+$scope.query.limit);
   	},function(error){
-  			console.log(error);
+  		$mdToast.show(Messages.error(error));
   	});
 
   	// Function to show the specific elements in the table
@@ -69,7 +70,7 @@
 		if(users.length >2){
 			throw "You can edit one user at the same time";
 		}
-		$state.go("getUser",{id : user[0]._id});
+		$state.go("getUser",{id : users[0]._id});
 	};
 
 	// Remove user from table and data  base
@@ -82,10 +83,10 @@
 		user.active = true;
      	UsersService.updateUser(user).then(
      	function(data){
-     		console.log(data);
+     		$mdToast.show(Messages.success(data));
      	},
      	function(error){
-     		console.log(error);
+     		$mdToast.show(Messages.error(error));
      	});
 	};
 
@@ -100,16 +101,19 @@
 		function(data) {
 			if(!$scope.inactives){
 	 			angular.forEach(data,function(user){
-	 				lodash.remove($scope.users,function(u){
-	 					return user.data.data._id == u._id;
-	 				});
+		 				lodash.remove($scope.users,function(u){
+		 					return user.data.data._id == u._id;
+		 				});
 	 			});
 			}
+			try{
+ 				$mdToast.show(Messages.success(data[0]));
+			}catch(e){}
 			$scope.onOrderChange();
  			// $scope.usersToShow = $scope.users.slice(($scope.query.page-1)*5,($scope.query.page-1)*5+$scope.query.limit);
  			$scope.selected.length = 0;
 		}, function(error) {
-			console.log(error);
+			$mdToast.show(Messages.error(error));
 		});
 	};
 
@@ -124,4 +128,5 @@
 	};
 
   }]);
+
 })();

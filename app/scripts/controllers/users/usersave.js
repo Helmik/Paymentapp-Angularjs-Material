@@ -9,7 +9,7 @@
 	 * Controller of the paymentappApp
 	 */
 	angular.module('Users')
-  .controller('UserSaveCtrl', ['$scope','$state','$mdToast','UsersService','HandleErrors',function ($scope,$state,$mdToast,UsersService,HandleErrors) {
+  .controller('UserSaveCtrl', ['$scope','$state','$mdToast','UsersService','Messages',function ($scope,$state,$mdToast,UsersService,Messages) {
 
   	$scope.user = {};
     $scope.editMode = false;
@@ -27,7 +27,7 @@
         delete $scope.user.password;
       },
       function(error){
-        console.log('----',error);
+        $mdToast.show(Messages.error(error));
       });
     }
 
@@ -44,9 +44,9 @@
     function updateUser(user){
       UsersService.updateUser(user).then(
         function(data){
-          console.log(data);
+          $mdToast.show(Messages.success(data));
         },function(error){
-          console.log(error);
+          $mdToast.show(Messages.error(error));
         }
       );
     }
@@ -54,9 +54,9 @@
     function createUser(user){
   		UsersService.saveUser(user).then(
   			function(data){
-  				console.log(data);
+          $mdToast.show(Messages.success(data));
   			},function(error){
-          $mdToast.show(HandleErrors.error(error));
+          $mdToast.show(Messages.error(error));
   			}
   		);
   	}
