@@ -12,19 +12,19 @@
   	var self = this;
 
   	self.getUsers = function(){
-  		return PetitionsService.get("users");
+  		return PetitionsService.get("user");
   	};
 
     self.getUserById = function(id){
-      return PetitionsService.get("users/"+id)
+      return PetitionsService.get("user/"+id)
     };
 
   	self.saveUser = function(user){
-  		return PetitionsService.post("users/create",user);
+  		return PetitionsService.post("user/create",user);
   	};
 
     self.updateUser = function(user){
-      return PetitionsService.put("users/update/"+user._id,user);
+      return PetitionsService.put("user/update/"+user._id,user);
     }
 
   }]);

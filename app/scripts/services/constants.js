@@ -12,6 +12,7 @@
   .value('BACK_END', {
   	'BASE_URL' : "http://localhost",
   	'PORT' : "3000",
-  	'URL' : function(){return this.BASE_URL+":"+this.PORT+"/"}
+  	'API' : "api/",
+  	'URL' : function(){return this.BASE_URL+":"+this.PORT+"/"+this.API}
   });
 })();
