@@ -8,7 +8,7 @@
    *
    * Main module of the application.
    */
-  var app = angular
+  angular
   .module('paymentappApp', [
     'ngAnimate',
     'ngCookies',
@@ -21,6 +21,7 @@
     'ui.router',
     'md.data.table',
     'ngLodash',
+    'ngMenuSidenav',
 
     'Layout',
     'Users',
@@ -51,5 +52,13 @@
       controller: 'UserSaveCtrl',
       templateUrl: 'views/users/saveuser.html'
     });
-  });
+  })
+  .controller('AppCtrl', ['$scope', '$mdSidenav', function ($scope, $mdSidenav) {
+    $scope.index = 0;
+
+    $scope.toggleSidenav = function (menuId) {
+      $mdSidenav(menuId).toggle();
+    };
+  }]);
+
 })();
